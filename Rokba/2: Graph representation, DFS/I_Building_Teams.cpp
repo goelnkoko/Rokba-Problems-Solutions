@@ -52,5 +52,4 @@ int main(){
     } else {
         cout << "IMPOSSIBLE" << endl;
     }
-    
 }
