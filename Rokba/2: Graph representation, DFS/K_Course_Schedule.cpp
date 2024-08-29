@@ -37,11 +37,6 @@ void dfs(int n){
     }
 }
 
-void khan(int n){
-
-    
-}
-
 int main(){
 
     Nkumbo
