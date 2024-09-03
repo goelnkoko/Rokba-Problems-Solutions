@@ -1,0 +1,1 @@
+{"name":"Local: Owl_Fight","url":"/home/nkumbo/Documents/CP/Rokba/2: BFS/Owl_Fight.cpp","tests":[{"id":1725393386863,"input":"7 3\n1 2\n3 4\n1 7\n4\n1 2\n5 6\n3 7\n1 5","output":"TIE\n6\n7\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nkumbo/Documents/CP/Rokba/2: BFS/Owl_Fight.cpp","group":"local","local":true}
