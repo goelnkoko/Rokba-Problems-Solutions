@@ -1,64 +1,106 @@
-#include <bits/stdc++.h> 
-
-#define Nkumbo ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
-#define vi vector<int> 
-#define endl '\n'
-#define f first
-#define s second
-
+#include <bits/stdc++.h>
 using namespace std;
 
-using ll = long long;
-using pii = pair<int, int>;
+const int MAXN = 1005;
+const int INF = INT_MAX;
 
-const int MAX = 1001;
-
-vector<pii> moves = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-char adj[MAX][MAX];
 int n, m;
+char grid[MAXN][MAXN];
+int dist[MAXN][MAXN];
+bool vis[MAXN][MAXN];
+pair<int, int> parents[MAXN][MAXN];
+vector<pair<int, int>> dx = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+vector<char> pdx = {'D', 'U', 'R', 'L'};
 
-bool isPossible(int x, int y){
-    if(x >= 0 && x < n && y >= 0 && y < m && adj[x][y] == '.') return true;
-    return false;
-}
+void bfs1() {
+    queue<pair<int, int>> q;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            if (grid[i][j] == 'M') {
+                q.push({i, j});
+                dist[i][j] = 0;
+            } else {
+                dist[i][j] = INF;
+            }
+        }
+    }
 
-void bfs(vector<vector<int>>& v){
-    
-    deque<pii> q;
-    q.push_front({0, 0});
-    v[0][0] = 0;
-
-    while(!q.empty()){
-        pii no = q.front();
-        q.pop_front();
-
-        for(auto& i: moves){
-            ll a = no.f + i.f, b = no.s + i.s;
-            if(isPossible(a, b)){
-                ll k = adj[a][b] == adj[no.f][no.s] ? 0:1;
-                if(v[no.f][no.s] + k < v[a][b]){
-                    v[a][b] = v[no.f][no.s] + k;
-                    
-                    if(k) q.push_back({a, b});
-                    else q.push_front({a, b});
-                }
+    while (!q.empty()) {
+        pair<int, int> front = q.front();
+        q.pop();
+        int x = front.first, y = front.second;
+        for (int d = 0; d < 4; ++d) {
+            int nx = x + dx[d].first;
+            int ny = y + dx[d].second;
+            if (nx >= 0 && nx < n && ny >= 0 && ny < m && grid[nx][ny] == '.' && dist[nx][ny] == INF) {
+                dist[nx][ny] = dist[x][y] + 1;
+                q.push({nx, ny});
             }
         }
     }
 }
 
-int main(){
+bool bfs2(pair<int, int> s) {
+    queue<pair<int, int>> q;
+    q.push(s);
+    vis[s.first][s.second] = true;
+    while (!q.empty()) {
+        pair<int, int> front = q.front();
+        q.pop();
+        int x = front.first, y = front.second;
+        if (x == 0 || x == n - 1 || y == 0 || y == m - 1) {
+            vector<char> path;
+            while (make_pair(x, y) != s) {
+                auto px = parents[x][y].first;
+                auto py = parents[x][y].second;
+                if (px == x + 1) path.push_back('U');
+                else if (px == x - 1) path.push_back('D');
+                else if (py == y + 1) path.push_back('L');
+                else if (py == y - 1) path.push_back('R');
+                x = px;
+                y = py;
+            }
+            reverse(path.begin(), path.end());
+            cout << "YES\n" << path.size() << "\n";
+            for (char dir : path) {
+                cout << dir;
+            }
+            cout << "\n";
+            return true;
+        }
+        for (int d = 0; d < 4; ++d) {
+            int nx = x + dx[d].first;
+            int ny = y + dx[d].second;
+            if (nx >= 0 && nx < n && ny >= 0 && ny < m && !vis[nx][ny]) {
+                if (grid[nx][ny] == '.' && (dist[nx][ny] == INF || (dist[nx][ny] > dist[x][y] + 1))) {
+                    dist[nx][ny] = dist[x][y] + 1;
+                    vis[nx][ny] = true;
+                    parents[nx][ny] = {x, y};
+                    q.push({nx, ny});
+                }
+            }
+        }
+    }
+    return false;
+}
 
-    Nkumbo
-
+int main() {
     cin >> n >> m;
-
-    for(int i=0; i < n; i++)
-        for(int j=0; j < m; j++)
-            cin >> adj[i][j];
-
-    for(int i=0; i < n; i++){
-        for
+    pair<int, int> s;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cin >> grid[i][j];
+            if (grid[i][j] == 'A') {
+                s = {i, j};
+            }
+        }
+    }
+    
+    bfs1();
+    dist[s.first][s.second] = 0;
+    if (!bfs2(s)) {
+        cout << "NO\n";
     }
 
+    return 0;
 }
