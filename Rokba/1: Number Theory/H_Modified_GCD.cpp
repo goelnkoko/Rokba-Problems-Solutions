@@ -1,52 +1,56 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> 
 
-#define Nkumbo ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
-#define compareBySecond [](const pair<int, int>& a, const pair<int, int>& b) { return a.second < b.second; }
-#define desc greater<int>()
-#define all(x) x.begin(), x.end()
-#define MAX 1e14
-#define MOD 100000000
-#define ll long long
-#define vll vector<ll> 
 #define endl '\n'
-#define f first 
-#define s second
+#define all(x) x.begin(), x.end()
+#define ff first
+#define ss second
+#define int long long
 
 using namespace std;
 
-ll gcd(ll a, ll b){
-    return b == 0 ? a : gcd(b, a % b);
+typedef long long ll;
+typedef pair<int, int> pii;
+
+const ll MOD = 1e9+7;
+const int MAX = 2e5+10;
+
+inline int gcd(int a, int b){
+    return b ? gcd(b, a%b) : a;
 }
 
-int main() {
-	
-	ll a, b; 
+inline int lcm(int a, int b){
+    return a*b/gcd(a, b);
+}
+
+signed main(){
+
+    int a, b;
     cin >> a >> b;
 
-    vector<ll> divs;
+    int g = gcd(a, b);
 
-    ll d = gcd(a, b);
+    vector<int> dv;
 
-    for(ll i = 1; i * i <= d; i++){
-        if(d % i == 0) {
-            divs.push_back(i);
-            if(d/i != i) divs.push_back(d/i);
+    for(int i=1; i*i <= g; i++)
+        if(g % i == 0){
+            dv.push_back(i);
+            if(g/i != i)
+                dv.push_back(g/i);
         }
+
+    sort(all(dv));
+
+    int n; 
+    cin >> n;
+
+    while(n--){
+        int l, r;
+        cin >> l >> r;
+
+        auto it = upper_bound(all(dv), r);
+        if(it != dv.begin()) it--;
+
+        if(*it < l) cout << -1 << endl;
+        else cout << *it << endl;
     }
-    sort(all(divs));
-
-    int q;
-    cin >> q;
-
-     while(q--){
-        cin >> a >> b;
-
-        auto it = upper_bound(all(divs), b);
-        it--;
-        if(*it >= a) cout << *it << endl;
-        else cout << -1 << endl;
-    }
-
-
-	return 0;
 }

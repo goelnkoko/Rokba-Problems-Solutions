@@ -1,0 +1,1 @@
+{"name":"Local: Outro","url":"/home/nkumbo/Documents/CP/Outro.cpp","tests":[{"id":1726415882523,"input":"5\n1\n2\n3\n4\n5","output":"1\n1\n2\n2\n4"},{"id":1726415913910,"input":"1 500","output":"200"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nkumbo/Documents/CP/Outro.cpp","group":"local","local":true}
