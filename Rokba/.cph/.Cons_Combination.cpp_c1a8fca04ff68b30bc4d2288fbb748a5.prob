@@ -1,0 +1,1 @@
+{"name":"Local: Cons_Combination","url":"/home/nkumbo/Documents/CP/Rokba/Cons_Combination.cpp","tests":[{"id":1727037165604,"input":"3 9\n2 3 5","output":"8"},{"id":1727040428724,"input":"1 1\n1000000","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nkumbo/Documents/CP/Rokba/Cons_Combination.cpp","group":"local","local":true}
