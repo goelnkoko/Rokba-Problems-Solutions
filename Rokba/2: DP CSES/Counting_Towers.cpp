@@ -32,7 +32,6 @@ signed main(){
         }
     }
 
-    
     while(t--){
         int n; cin >> n; 
 

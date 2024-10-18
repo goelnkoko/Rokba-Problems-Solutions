@@ -41,20 +41,20 @@ signed main(){
         cin >> tb[i][0] >> tb[i][1] >> tb[i][2];
     }    
 
-    dp[0][0] = tb[0][0];
-    dp[0][1] = tb[0][1];
-    dp[0][2] = tb[0][2];
+dp[0][0] = tb[0][0];
+dp[0][1] = tb[0][1];
+dp[0][2] = tb[0][2];
 
-    for(int i=1; i < n; i++){
-        for(int j=0; j < 3; j++){
-            if(j == 0)
-                dp[i][j] = tb[i][j] + max(dp[i-1][1], dp[i-1][2]);
-            if(j == 1)
-                dp[i][j] = tb[i][j] + max(dp[i-1][0], dp[i-1][2]);
-            if(j == 2)
-                dp[i][j] = tb[i][j] + max(dp[i-1][0], dp[i-1][1]);
-        }
+for(int i=1; i < n; i++){
+    for(int j=0; j < 3; j++){
+        if(j == 0)
+            dp[i][j] = tb[i][j] + max(dp[i-1][1], dp[i-1][2]);
+        if(j == 1)
+            dp[i][j] = tb[i][j] + max(dp[i-1][0], dp[i-1][2]);
+        if(j == 2)
+            dp[i][j] = tb[i][j] + max(dp[i-1][0], dp[i-1][1]);
     }
+}
 
     int res = max(dp[n-1][0], max(dp[n-1][1], dp[n-1][2]));
     

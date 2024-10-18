@@ -10,23 +10,25 @@ using namespace std;
 using ll = long long;
 using pii = pair<int, int>;
 
-const int MAX = 100010;
+const int MAX = 10010;
 
-vector<int> adj[MAX];
+set<int> adj[MAX];
 vector<int> occor(MAX, 0);
+vector<int> v(MAX, 0);
 vector<int> res;
 
 void bfs(int n){
 
-    queue<int> q;
-    for(int i=1; i <= n; i++){
+    priority_queue<int, vector<int>, greater<int>> q;
+
+    for(int i=1; i <= n; i++)
         if(occor[i] == 0)
             q.push(i);
-    }
 
     while(!q.empty()){
         
-        int curr = q.front();
+        int curr = q.top();
+        v[curr] = 1;
         res.push_back(curr);
         q.pop();
 
@@ -48,16 +50,16 @@ int main(){
 
     for(int i=1; i <= m; i++){
         int a, b; cin >> a >> b;
-        adj[a].push_back(b);
+        adj[a].insert(b);
         occor[b]++;
     }   
-    
-    dfs(n);
+
+    bfs(n);
 
     if(res.size() == n){
         for(auto i: res) cout << i << ' '; cout << endl;
     }
     else 
-        cout << "IMPOSSIBLE" << endl;
+        cout << "Sandro fails." << endl;
 
 }

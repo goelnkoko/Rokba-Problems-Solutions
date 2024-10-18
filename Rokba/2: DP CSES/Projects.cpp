@@ -37,17 +37,17 @@ signed main(){
         cin >> pro[i].s >> pro[i].e >> pro[i].v;
     }
 
-    sort(all(pro));
-    set<pii> ends;
-    ends.insert({0, 0});
-    ll ans = 0;
+sort(all(pro));
+set<pii> ends;
+ends.insert({0, 0});
+ll ans = 0;
 
-    for(int i=0; i < n; i++){
-        auto it = ends.lower_bound({pro[i].s, -1});
-        it--;
-        ans = max(ans, pro[i].v + it->second);
-        ends.insert({pro[i].e, ans});
-    }
+for(int i=0; i < n; i++){
+    auto it = ends.lower_bound({pro[i].s, -1});
+    it--;
+    ans = max(ans, pro[i].v + it->second);
+    ends.insert({pro[i].e, ans});
+}
 
     cout << ans;
 

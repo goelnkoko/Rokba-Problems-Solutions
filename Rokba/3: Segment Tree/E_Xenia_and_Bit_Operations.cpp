@@ -97,4 +97,6 @@ signed main(){
         update(1, 1, n, pos, x, ver);
         cout << query(1, 1, n, 1, n, ver) << endl;
     }
+
+    tolo
 }

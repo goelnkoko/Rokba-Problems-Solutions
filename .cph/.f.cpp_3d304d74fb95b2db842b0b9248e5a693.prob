@@ -1,1 +1,1 @@
-{"name":"Local: f","url":"/home/nkumbo/Documents/CP/f.cpp","tests":[{"id":1723847444449,"input":"23\n437 519 865 808 909 391 194 291 237 395 323 365 511 497 781 737 871 559 731 697 779 841 961","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nkumbo/Documents/CP/f.cpp","group":"local","local":true}
+{"name":"Local: f","url":"/home/nkumbo/Documents/CP/f.cpp","tests":[],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nkumbo/Documents/CP/f.cpp","group":"local","local":true}

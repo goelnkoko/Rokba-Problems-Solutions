@@ -31,15 +31,15 @@ signed main(){
     
     vector<vi> dp(n+1, vi(W+1));
 
-    for(int i=1; i <= n; i++){
-        for(int j=1; j <= W; j++){
-            if(tb[i].w <= j){
-                dp[i][j] = max(dp[i-1][j], tb[i].v + dp[i-1][j - tb[i].w]);
-            } else {
-                dp[i][j] = dp[i-1][j];
-            }
+for(int i=1; i <= n; i++){
+    for(int j=1; j <= W; j++){
+        if(tb[i].w <= j){
+            dp[i][j] = max(dp[i-1][j], tb[i].v + dp[i-1][j - tb[i].w]);
+        } else {
+            dp[i][j] = dp[i-1][j];
         }
     }
+}
     
     cout << dp[n][W] << endl;
 }

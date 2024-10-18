@@ -17,13 +17,13 @@ const int MOD = 1000000007;
 vector<int> primes(MAX, 1);
 
 void primos(int M){
-    primes[0] = primes[1] = 0;
-    for(int i=2; i*i <= M; i++){
-        if(primes[i])
-        for(int j = i*i; j <= M; j += i){
-            primes[j] = 0;
-        }
+primes[0] = primes[1] = 0;
+for(int i=2; i*i <= M; i++){
+    if(primes[i])
+    for(int j = i*i; j <= M; j += i){
+        primes[j] = 0;
     }
+}
 
     for(int i=2; i <= M; i++)
         primes[i] += primes[i-1];

@@ -22,7 +22,6 @@ bool comp(const pair<pii, int>& a, const pair<pii, int>& b){
 
 int find(int x){
     if(par[x] < 0) return x;
-
     return par[x] = find(par[x]);
 }
 

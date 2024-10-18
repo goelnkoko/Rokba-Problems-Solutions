@@ -1,0 +1,1 @@
+{"name":"Local: cc","url":"/home/nkumbo/Documents/CP/cc.cpp","tests":[{"id":1728227836538,"input":"5 10\n1 2 3 4 5\nA 3 1\nQ 1 3\nR 5 2 4\nA 1 1\nQ 1 1\nQ 1 2\nQ 1 4\nA 3 5\nQ 5 5\nQ 1 5","output":"2\n1\n2\n4\n0\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/nkumbo/Documents/CP/cc.cpp","group":"local","local":true}

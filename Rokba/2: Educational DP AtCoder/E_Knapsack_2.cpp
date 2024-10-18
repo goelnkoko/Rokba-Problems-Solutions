@@ -40,13 +40,6 @@ int kp(int i, int val){
  
 signed main(){
 
-    int n, W;
-    cin >> n >> W;
-
-    for(int i=1; i <= n; i++){
-        cin >> tb[i].w >> tb[i].v;
-    }
-
     int ans = 0;
     for(int i=1e5; i >= 0; i--){
         if(kp(n, i) <= W){
